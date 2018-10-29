@@ -1,8 +1,13 @@
 package com.chant.dechanter.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 @Table(name="chanticleer")
 public class Chanticleer {
 
@@ -14,22 +19,6 @@ public class Chanticleer {
     private String email;
 
     public Chanticleer(String email) {
-        this.email = email;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
     }
 
