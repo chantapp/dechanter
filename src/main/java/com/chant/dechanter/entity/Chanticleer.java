@@ -8,14 +8,14 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name="chanticleer")
+@Table(name="mktg_email")
 public class Chanticleer {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @Column(name="email")
+    @Column(name="email_address")
     private String email;
 
     public Chanticleer(String email) {
