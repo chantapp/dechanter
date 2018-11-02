@@ -40,7 +40,7 @@ public class EmailController {
         //check for at sign
         boolean at = false;
         int stop = 0;
-        for(int i = 0; i<email.length() || at==false; i++){
+        for(int i = 0; i<email.length(); i++){
             char curr = email.charAt(i);
             if(curr == '@') {
                 if(at==true) return false;
