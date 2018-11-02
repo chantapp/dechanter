@@ -141,7 +141,7 @@
             //getComments(1);
             $("a").click(function() {
                 var em = $("#email").val();
-                var ur = 'http://localhost:7777/hi?email=' + em;
+                var ur = 'https://dechanter.herokuapp.com/emails/' + em;
 
                 $.ajax({
                     type: 'POST',
