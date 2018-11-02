@@ -3,7 +3,12 @@ package com.chant.dechanter.controller;
 import com.chant.dechanter.entity.Chanticleer;
 import com.chant.dechanter.repo.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 //
 //import java.util.concurrent.atomic.AtomicLong;
 
@@ -14,23 +19,18 @@ public class EmailController {
     @Autowired
     EmailRepository repo;
 
-    @RequestMapping(value = "/emails/{email}", method = RequestMethod.POST)
-    public Chanticleer addEmail(@PathVariable("email") String email) {
+    @PostMapping(value = "/emails/{email}")
+    public Chanticleer addEmails(@PathVariable("email") String email) {
         Chanticleer c = new Chanticleer();
         c.setEmailName(email);
         repo.save(c);
         return c;
     }
-//
-//    @PostMapping(value="hi")
-//    public Chanticleer hi(@RequestParam(name="email", required=false, defaultValue="none") String email) {
-//        Chanticleer c = new Chanticleer(email);
-//        repo.save(c);
-//        return c;
-//    }
-//
-    @RequestMapping(value="/test")
-    public String test() {
-        return "dd";
+
+    @GetMapping(value = "/emails")
+    public ResponseEntity<?> getEmails() {
+        List<Chanticleer> a = repo.findAll();
+        return new ResponseEntity<>(a,HttpStatus.OK);
     }
+
 }
