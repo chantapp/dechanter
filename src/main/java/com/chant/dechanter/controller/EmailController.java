@@ -19,9 +19,12 @@ public class EmailController {
     @Autowired
     EmailRepository repo;
 
-    @PostMapping(value = "/emails/{email}")
+    @PutMapping(value = "/emails/{email}")
     public Chanticleer addEmails(@PathVariable("email") String email) {
         Chanticleer c = new Chanticleer();
+        if(notRealEmail(email)) {
+            return c;
+        }
         c.setEmailName(email);
         repo.save(c);
         return c;
@@ -31,6 +34,23 @@ public class EmailController {
     public ResponseEntity<?> getEmails() {
         List<Chanticleer> a = repo.findAll();
         return new ResponseEntity<>(a,HttpStatus.OK);
+    }
+
+    private boolean notRealEmail(String email) {
+        //check for at sign
+        boolean at = false;
+        int stop = 0;
+        for(int i = 0; i<email.length() || at==false; i++){
+            char curr = email.charAt(i);
+            if(curr == '@') {
+                if(at==true) return false;
+                at = true;
+            } else if(curr == '.') {
+                if(at==true && i<(email.length()-1)) return true;
+            }
+        }
+        return false;
+        //check for .
     }
 
 }
