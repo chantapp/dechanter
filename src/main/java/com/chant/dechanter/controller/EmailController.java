@@ -37,16 +37,15 @@ public class EmailController {
     }
 
     private boolean notRealEmail(String email) {
-        //check for at sign
+
         boolean at = false;
-        int stop = 0;
         for(int i = 0; i<email.length(); i++){
             char curr = email.charAt(i);
             if(curr == '@') {
                 if(at==true) return false;
                 at = true;
             } else if(curr == '.') {
-                if(at==true && i<(email.length()-1)) return true;
+                if(at==true) return true;
             }
         }
         return false;
