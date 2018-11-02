@@ -3,7 +3,11 @@ package com.chant.dechanter.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
 @Getter
@@ -16,10 +20,10 @@ public class Chanticleer {
 //    private long id;
     @Id
     @Column(name="email_address")
-    private String email;
+    private String emailName;
 
     public Chanticleer(String email) {
-        this.email = email;
+        this.emailName = email;
     }
 
 }
