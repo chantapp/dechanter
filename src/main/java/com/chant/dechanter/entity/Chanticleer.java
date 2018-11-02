@@ -20,7 +20,7 @@ public class Chanticleer {
 //    private long id;
     @Id
     @Column(name="email_address")
-    private String emailName;
+    private static String emailName;
 
     public Chanticleer(String email) {
         this.emailName = email;
