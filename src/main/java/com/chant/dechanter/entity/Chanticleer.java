@@ -10,20 +10,23 @@ import javax.persistence.Table;
 
 
 @Entity
-@Getter
-@Setter
 @Table(name="mktg_email")
 public class Chanticleer {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private long id;
     @Id
     @Column(name="email_address")
-    private static String emailName;
+    private String emailName;
 
-    public Chanticleer(String email) {
-        this.emailName = email;
+    public Chanticleer() {
+
+    }
+
+    public String getEmailName() {
+        return emailName;
+    }
+
+    public void setEmailName(String emailName) {
+        this.emailName = emailName;
     }
 
 }

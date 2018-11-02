@@ -16,7 +16,8 @@ public class EmailController {
 
     @RequestMapping(value = "/emails/{email}", method = RequestMethod.POST)
     public Chanticleer addEmail(@PathVariable("email") String email) {
-        Chanticleer c = new Chanticleer(email);
+        Chanticleer c = new Chanticleer();
+        c.setEmailName(email);
         repo.save(c);
         return c;
     }
